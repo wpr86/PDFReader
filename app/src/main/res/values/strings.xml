@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PDF阅读器</string>
+    <string name="action_open">打开</string>
+    <string name="action_delete">删除</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_setting">设置</string>
+    <string name="dialog_title">打开文件</string>
+    <string name="default_text">暂无文件，请点下方按钮打开</string>
+</resources>
