@@ -99,12 +99,14 @@ public class FileBrowserDialog extends Dialog implements FileBrowserRecyclerAdap
         List<File> lfolders = new ArrayList<>();    // 记录文件夹
         List<File> lfiles = new ArrayList<>();      // 记录文件
 
-        for(File file:files){
-            if(file.isDirectory()){
-                lfolders.add(file);
-            }
-            else{
-                lfiles.add(file);
+        if(files != null){
+            for(File file:files){
+                if(file.isDirectory()){
+                    lfolders.add(file);
+                }
+                else{
+                    lfiles.add(file);
+                }
             }
         }
 

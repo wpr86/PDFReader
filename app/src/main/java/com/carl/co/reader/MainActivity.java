@@ -111,8 +111,14 @@ public class MainActivity extends AppCompatActivity implements MyRecyclerAdapter
     }
 
     @Override
-    public void onItemClick(BookBean bookBean) {
-        openBook(bookBean);
+    public void onItemClick(BookBean bookBean, int position) {
+        if(new File(bookBean.path).exists()) {
+            openBook(bookBean);
+        }
+        else {
+            Snackbar.make(mainLayout, bookBean.title + " 不存在", Snackbar.LENGTH_LONG).show();
+            mRecyclerAdapter.itemDismiss(position);
+        }
     }
 
     private void openBook(BookBean bookBean){

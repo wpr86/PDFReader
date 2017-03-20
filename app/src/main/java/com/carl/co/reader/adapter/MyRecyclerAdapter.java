@@ -54,7 +54,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             holder.mItem.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    mOnClickListener.onItemClick(mList.get(holder.getAdapterPosition()));
+                    mOnClickListener.onItemClick(mList.get(holder.getAdapterPosition()), holder.getAdapterPosition());
                 }
             });
         }
@@ -97,6 +97,13 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         mOnItemAllDissmissListener.onItemAllDissmiss(false);
     }
 
+    public void itemDismiss(int position){
+        mList.remove(position);
+        notifyItemRemoved(position);
+        if(mList.size()<=0)
+            mOnItemAllDissmissListener.onItemAllDissmiss(true);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public CardView mItem;
@@ -114,13 +121,6 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             mProgress = (ProgressBar)v.findViewById(R.id.item_progressbar);
             mItemPath = (TextView)v.findViewById(R.id.item_book_path);
         }
-    }
-
-    public void itemDismiss(int position){
-        mList.remove(position);
-        notifyItemRemoved(position);
-        if(mList.size()<=0)
-            mOnItemAllDissmissListener.onItemAllDissmiss(true);
     }
 
     public void upDataProgress(long id, float speed){
@@ -145,7 +145,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
     }
 
     public interface OnClickListener{
-        void onItemClick(BookBean bookBean);
+        void onItemClick(BookBean bookBean, int position);
     }
 
     public void setOnClickListener(MyRecyclerAdapter.OnClickListener onClickListener){
