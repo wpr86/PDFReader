@@ -13,9 +13,7 @@
         android:background="?attr/colorPrimary"
         app:layout_collapseMode="pin"
         app:layout_scrollFlags="scroll"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-
-
-        </android.support.v7.widget.Toolbar>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    </android.support.v7.widget.Toolbar>
 
 </android.support.design.widget.AppBarLayout>
